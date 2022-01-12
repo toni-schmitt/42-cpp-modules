@@ -1,3 +1,19 @@
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+# Unignore Makefile
+!Makefile
+
+# Ignore IDE related files
+.vscode
+.idea
+
 # Prerequisites
 *.d
 
