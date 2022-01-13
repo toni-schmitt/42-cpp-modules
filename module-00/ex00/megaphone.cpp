@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: toni <toni@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 20:24:02 by toni              #+#    #+#             */
-/*   Updated: 2022/01/12 17:41:48 by toni             ###   ########.fr       */
+/*   Created: 2022/01/13 16:15:47 by toni              #+#    #+#             */
+/*   Updated: 2022/01/13 16:24:00 by toni             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 {
 	if (argc == 1)
 	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 		return 0;
 	}
 
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 			std::cout << (char)std::toupper(argv[i][j]);
 		}
 	}
-	std::cout << "\n";
-	
-	return 0;
+	std::cout << std::endl;
+
+	return 0;	
 }
