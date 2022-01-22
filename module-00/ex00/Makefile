@@ -6,13 +6,13 @@
 #    By: toni <toni@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/11 20:22:35 by toni              #+#    #+#              #
-#    Updated: 2022/01/11 20:27:13 by toni             ###   ########.fr        #
+#    Updated: 2022/01/21 21:54:56 by toni             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = c++
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -std=c++98 -Wall -Werror -Wextra
 
 BIN = ./megaphone
 

@@ -6,12 +6,12 @@
 #    By: toni <toni@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/15 19:11:17 by toni              #+#    #+#              #
-#    Updated: 2022/01/15 19:28:04 by toni             ###   ########.fr        #
+#    Updated: 2022/01/21 21:57:25 by toni             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -std=c++98 -Wall -Werror -Wextra
 
 SRC = main.cpp Zombie.cpp ZombieHorde.cpp
 OBJ = $(SRC:.cpp=.o)

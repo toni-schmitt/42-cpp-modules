@@ -6,12 +6,12 @@
 #    By: toni <toni@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/15 10:38:56 by toni              #+#    #+#              #
-#    Updated: 2022/01/15 11:03:27 by toni             ###   ########.fr        #
+#    Updated: 2022/01/21 21:56:48 by toni             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -std=c++98 -Wall -Werror -Wextra
 
 SRC = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 OBJ = $(SRC:.cpp=.o)
