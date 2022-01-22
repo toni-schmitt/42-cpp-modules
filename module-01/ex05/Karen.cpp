@@ -6,7 +6,7 @@
 /*   By: toni <toni@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:28:38 by toni              #+#    #+#             */
-/*   Updated: 2022/01/16 01:12:52 by toni             ###   ########.fr       */
+/*   Updated: 2022/01/21 22:00:44 by toni             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void Karen::complain(std::string error_level)
 	func_map["warning"] = &Karen::warning;
 	func_map["error"] = &Karen::error;
 
-	auto func = func_map[error_level];
+	// auto func = func_map[error_level];
 
-	if (func == NULL)
+	if (func_map[error_level] == NULL)
 	{
 		std::cout << error_level << " not found" << std::endl;
 		return;
 	}
 
-	(*this.*(func))();
+	(*this.*(func_map[error_level]))();
 }

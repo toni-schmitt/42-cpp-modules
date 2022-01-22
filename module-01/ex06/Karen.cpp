@@ -6,7 +6,7 @@
 /*   By: toni <toni@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:28:38 by toni              #+#    #+#             */
-/*   Updated: 2022/01/18 20:58:25 by toni             ###   ########.fr       */
+/*   Updated: 2022/01/22 01:12:18 by toni             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void Karen::complain(std::string error_level)
 	func_map["warning"] = &Karen::warning;
 	func_map["error"] = &Karen::error;
 
-	auto func = func_map[error_level];
-	if (func == NULL)
+	// auto func = func_map[error_level];
+	if (func_map[error_level] == NULL)
 	{
 		std::cout << error_level << " not found" << std::endl;
 		return;
@@ -72,7 +72,7 @@ void Karen::complain(std::string error_level)
 	}
 
 	if (level >= _minLogLevel)
-		(*this.*(func))();
+		(*this.*(func_map[error_level]))();
 }
 
 void Karen::setMinLogLevel(std::string min_log_level)

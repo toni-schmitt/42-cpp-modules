@@ -6,7 +6,7 @@
 /*   By: toni <toni@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 20:30:01 by toni              #+#    #+#             */
-/*   Updated: 2022/01/16 00:23:16 by toni             ###   ########.fr       */
+/*   Updated: 2022/01/21 22:00:02 by toni             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int main(int argc, char const *argv[])
 
 	std::ifstream in_stream;
 
-	in_stream.open(file_name);
+	in_stream.open(file_name.c_str());
 	if (!in_stream.is_open())
 	{
 		std::cout << "Error opening input file" << std::endl;
@@ -56,7 +56,7 @@ int main(int argc, char const *argv[])
 
 	std::ofstream out_stream;
 
-	out_stream.open(file_name.append(".replace"));
+	out_stream.open(file_name.append(".replace").c_str());
 	if (!out_stream.is_open())
 	{
 		std::cout << "Error opening output file" << std::endl;
