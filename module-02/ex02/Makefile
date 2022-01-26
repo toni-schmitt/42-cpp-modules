@@ -6,12 +6,12 @@
 #    By: toni <toni@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/19 16:57:31 by toni              #+#    #+#              #
-#    Updated: 2022/01/21 19:12:59 by toni             ###   ########.fr        #
+#    Updated: 2022/01/26 12:13:31 by toni             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -std=c++98 -Wall -Werror -Wextra -g
 
 BIN = main
 SRC = main.cpp Fixed.cpp
