@@ -6,7 +6,7 @@
 /*   By: toni <toni@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:28:38 by toni              #+#    #+#             */
-/*   Updated: 2022/01/26 12:03:04 by toni             ###   ########.fr       */
+/*   Updated: 2022/01/26 12:07:32 by toni             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void Karen::complain(std::string error_level)
 		&Karen::error
 	};
 
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		if (complain_level[i] == error_level)
 		{
