@@ -6,7 +6,7 @@
 /*   By: toni <toni@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:28:38 by toni              #+#    #+#             */
-/*   Updated: 2022/01/21 22:00:44 by toni             ###   ########.fr       */
+/*   Updated: 2022/01/26 12:03:04 by toni             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,28 @@ void Karen::error()
 
 void Karen::complain(std::string error_level)
 {
-	std::map<std::string, void (Karen::*)()> func_map;
-	func_map["debug"] = &Karen::debug;
-	func_map["info"] = &Karen::info;
-	func_map["warning"] = &Karen::warning;
-	func_map["error"] = &Karen::error;
+	static std::string complain_level[] = {
+		"debug",
+		"info",
+		"warning",
+		"error"
+	};
 
-	// auto func = func_map[error_level];
+	void (Karen::*function[])(void) = {
+		&Karen::debug,
+		&Karen::info,
+		&Karen::warning,
+		&Karen::error
+	};
 
-	if (func_map[error_level] == NULL)
+	for (int i = 0; i < 6; i++)
 	{
-		std::cout << error_level << " not found" << std::endl;
-		return;
+		if (complain_level[i] == error_level)
+		{
+			(this->*function[i])();
+			return;
+		}
 	}
-
-	(*this.*(func_map[error_level]))();
+	std::cout << "Error level not found" << std::endl;
+	
 }
