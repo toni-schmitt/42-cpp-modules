@@ -6,7 +6,7 @@
 /*   By: toni <toni@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 10:41:24 by toni              #+#    #+#             */
-/*   Updated: 2022/01/15 19:28:57 by toni             ###   ########.fr       */
+/*   Updated: 2022/01/26 11:47:56 by toni             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ private:
 public:
 	void announce();
 
-	void setName(std::string zombies_name) { this->_name = zombies_name; }
+	void setName(std::string zombies_name);
 
 	Zombie();
 	Zombie(std::string zombies_name);
