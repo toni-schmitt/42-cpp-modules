@@ -6,7 +6,7 @@
 /*   By: toni <toni@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 00:28:38 by toni              #+#    #+#             */
-/*   Updated: 2022/01/22 01:12:18 by toni             ###   ########.fr       */
+/*   Updated: 2022/01/26 12:08:25 by toni             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,50 +42,45 @@ void Karen::error()
 
 void Karen::complain(std::string error_level)
 {
-	std::map<std::string, void (Karen::*)()> func_map;
-	func_map["debug"] = &Karen::debug;
-	func_map["info"] = &Karen::info;
-	func_map["warning"] = &Karen::warning;
-	func_map["error"] = &Karen::error;
+	static std::string complain_level[] = {
+		"debug",
+		"info",
+		"warning",
+		"error"};
 
-	// auto func = func_map[error_level];
-	if (func_map[error_level] == NULL)
+	int level = -1;
+
+	for (int i = 0; i < 4; i++)
 	{
-		std::cout << error_level << " not found" << std::endl;
-		return;
+		if (error_level == complain_level[i])
+		{
+			level = i;
+			break;
+		}
 	}
 
-	int level;
-	try
+	switch (level)
 	{
-		level = _log_level_map.at(error_level);
-	}
-	catch(const std::out_of_range &oor)
-	{
-		return;
-	}
-	
-	if (this->_minLogLevel == e_invalid_level)
-	{
+	case 0:
+		this->debug();
+		this->info();
+		this->warning();
+		this->error();
+		break;
+	case 1:
+		this->info();
+		this->warning();
+		this->error();
+		break;
+	case 2:
+		this->warning();
+		this->error();
+		break;
+	case 3:
+		this->error();
+		break;
+	default:
 		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-		return;
+		break;
 	}
-
-	if (level >= _minLogLevel)
-		(*this.*(func_map[error_level]))();
-}
-
-void Karen::setMinLogLevel(std::string min_log_level)
-{
-	int min_level;
-	try
-	{
-		min_level = _log_level_map.at(min_log_level);
-	}
-	catch (const std::out_of_range &oor)
-	{
-		min_level = e_invalid_level;
-	}
-
-	this->_minLogLevel = min_level;
 }

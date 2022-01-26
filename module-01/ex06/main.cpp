@@ -6,7 +6,7 @@
 /*   By: toni <toni@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 20:29:29 by toni              #+#    #+#             */
-/*   Updated: 2022/01/18 20:58:32 by toni             ###   ########.fr       */
+/*   Updated: 2022/01/26 12:09:20 by toni             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,9 @@
 #include <iostream>
 
 
-int main(int argc, char const *argv[])
+int main(void)
 {
-	if (argc != 2)
-	{
-		std::cout << "Please provide the log level you want to listen to" << std::endl;
-		return 1;
-	}
-
 	Karen karen;
-
-	karen.setMinLogLevel(argv[1]);
 
 	karen.complain("info");
 	karen.complain("debug");
