@@ -3,30 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toni <toni@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tschmitt <tschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:00:19 by toni              #+#    #+#             */
-/*   Updated: 2022/01/26 12:11:59 by toni             ###   ########.fr       */
+/*   Updated: 2022/01/31 15:20:26 by tschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
+#include <iostream>
+
+/* Constructors */
 Fixed::Fixed()
 {
+	std::cout << "Default Constructor called" << std::endl;
 	this->_fixedPointValue = 0;
 }
 
-Fixed::Fixed(const Fixed &fixed)
+Fixed::Fixed(const Fixed &copy)
 {
-	this->_fixedPointValue = fixed._fixedPointValue;
+	std::cout << "Copy Constructor called" << std::endl;
+	this->_fixedPointValue = copy._fixedPointValue;
 }
 
-Fixed &Fixed::operator=(const Fixed &fixed)
+/* Deconstructors */
+Fixed::~Fixed()
 {
-	this->_fixedPointValue = fixed.getRawBits();
+	std::cout << "Deconstructor called" << std::endl;
+}
+
+/* Overloaded Operators */
+Fixed &Fixed::operator=(const Fixed &sec)
+{
+	std::cout << "Default Constructor called" << std::endl;
+	if (this == &sec)
+		return *this;
+
 	return *this;
 }
+
+/* Public Methods */
 
 int Fixed::getRawBits() const
 {
