@@ -3,7 +3,7 @@
 ########################################################################
 
 # Compiler settings - Can be customized.
-CC = g++
+CC = c++
 CXXFLAGS = -std=c++98 -Wall -Werror -Wextra
 LDFLAGS = 
 

@@ -6,7 +6,7 @@
 /*   By: tschmitt <tschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:24:44 by toni              #+#    #+#             */
-/*   Updated: 2022/01/31 16:10:42 by tschmitt         ###   ########.fr       */
+/*   Updated: 2022/01/31 16:10:29 by tschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ ClapTrap::ClapTrap(const ClapTrap &copy)
 	this->_hitPoints = copy._hitPoints;
 	this->_energyPoints = copy._energyPoints;
 	this->_attackDamage = copy._attackDamage;
-	std::cout << "ClaptTrap" << this->_name << " constructs itself as a copy from " << copy._name << "!" << std::endl;
+	std::cout << "ClaptTrap " << this->_name << " constructs itself as a copy from " << copy._name << "!" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name) : _name(name)

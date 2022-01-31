@@ -6,7 +6,7 @@
 /*   By: tschmitt <tschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 18:16:12 by toni              #+#    #+#             */
-/*   Updated: 2022/01/31 16:11:03 by tschmitt         ###   ########.fr       */
+/*   Updated: 2022/01/31 16:11:51 by tschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,5 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &sec)
 /* Public Methods */
 void ScavTrap::guardGate()
 {
-	std::cout << "ScavTrap" << this->_name << "is gatekeeping :(" << std::endl;
+	std::cout << "ScavTrap " << this->_name << " is gatekeeping :(" << std::endl;
 }

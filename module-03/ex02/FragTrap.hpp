@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tschmitt <tschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/26 16:37:43 by toni              #+#    #+#             */
-/*   Updated: 2022/01/31 16:05:06 by tschmitt         ###   ########.fr       */
+/*   Created: 2022/01/31 15:51:07 by tschmitt          #+#    #+#             */
+/*   Updated: 2022/01/31 15:56:01 by tschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#if !defined(___FRAG_TRAP_HPP___)
+#define ___FRAG_TRAP_HPP___
+
 #include "ClapTrap.hpp"
 
-int main(void)
+class FragTrap : public ClapTrap
 {
+private:
+	/* Private Members */
+public:
+	/* Constructors */
+	FragTrap();
+	FragTrap(const FragTrap& copy);
+	FragTrap(std::string name);
+	/* Deconstructors */
+	~FragTrap();
 
-	ClapTrap fishClap("fishClap");
-	ClapTrap catClap("catClap");
+	/* Overloaded Operators */
+	FragTrap &operator=(const FragTrap &sec);
+	/* Public Methods */
+	void highFivesGuys();
+};
 
-	catClap.attack("fishClap");
-	fishClap.takeDamage(0);
-	
-	fishClap.attack("catClap");
-	catClap.takeDamage(0);
-
-	fishClap.beRepaired(0);
-	catClap.beRepaired(0);
-	
-}
+#endif // ___FRAG_TRAP_HPP___

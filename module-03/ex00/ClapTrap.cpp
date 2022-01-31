@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toni <toni@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tschmitt <tschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:24:44 by toni              #+#    #+#             */
-/*   Updated: 2022/01/26 16:39:44 by toni             ###   ########.fr       */
+/*   Updated: 2022/01/31 16:10:54 by tschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ClapTrap::ClapTrap()
 	this->_hitPoints = 10;
 	this->_energyPoints = 10;
 	this->_attackDamage = 0;
-	std::cout << "ClaptTrap" << this->_name << "constructs itself!" << std::endl;
+	std::cout << "ClaptTrap " << this->_name << " constructs itself!" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &copy)
@@ -30,7 +30,7 @@ ClapTrap::ClapTrap(const ClapTrap &copy)
 	this->_hitPoints = copy._hitPoints;
 	this->_energyPoints = copy._energyPoints;
 	this->_attackDamage = copy._attackDamage;
-	std::cout << "ClaptTrap" << this->_name << "constructs itself as a copy from " << copy._name << "!" << std::endl;
+	std::cout << "ClaptTrap " << this->_name << " constructs itself as a copy from " << copy._name << "!" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
@@ -39,7 +39,7 @@ ClapTrap::ClapTrap(std::string name)
 	this->_hitPoints = 10;
 	this->_energyPoints = 10;
 	this->_attackDamage = 0;
-	std::cout << "ClaptTrap " << this->_name << "c onstructs itself!" << std::endl;
+	std::cout << "ClaptTrap " << this->_name << " constructs itself!" << std::endl;
 }
 
 /* Deconstructors */
