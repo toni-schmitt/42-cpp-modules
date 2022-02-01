@@ -1,0 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tschmitt <tschmitt@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/01 13:56:36 by tschmitt          #+#    #+#             */
+/*   Updated: 2022/02/01 17:32:53 by tschmitt         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#if !defined(___CAT_HPP___)
+#define ___CAT_HPP___
+
+#include "AAnimal.hpp"
+#include "Brain.hpp"
+
+class Cat : public AAnimal
+{
+private:
+	/* Private Members */
+	Brain *_pBrain;
+public:
+	/* Constructors */
+	Cat();
+	Cat(const Cat& copy);
+	/* Deconstructors */
+	~Cat();
+
+	/* Overloaded Operators */
+	Cat &operator=(const Cat &sec);
+
+	/* Public Methods */
+	void makeSound() const;
+
+	/* Getter */
+	std::string getType() const;
+
+	/* Setter */
+
+};
+
+
+#endif
