@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tschmitt <tschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/31 18:41:41 by tschmitt          #+#    #+#             */
-/*   Updated: 2022/01/31 19:00:24 by tschmitt         ###   ########.fr       */
+/*   Created: 2022/02/10 14:15:32 by tschmitt          #+#    #+#             */
+/*   Updated: 2022/02/10 14:52:42 by tschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 #define ___BUREAUCRAT_HPP___
 
 #include <string>
+#include <iostream>
+#include <exception>
 
 class Bureaucrat
 {
 private:
 	/* Private Members */
-	const std::string _name = "buero";
-	int _grade;
+	const std::string _name;
+	unsigned int _grade;
+
 public:
 	/* Constructors */
 	Bureaucrat();
-	Bureaucrat(const Bureaucrat& copy);
-	Bureaucrat(std::string name);
+	Bureaucrat(const Bureaucrat &copy);
 	/* Deconstructors */
 	~Bureaucrat();
 
@@ -37,12 +39,31 @@ public:
 	void decrementGrade();
 
 	/* Getter */
-	const std::string getName() const;
-	int getGrade() const;
+	std::string getName() const;
+	unsigned int getGrade() const;
 
 	/* Setter */
-	void setGrade(int grade);
+	void setGrade(unsigned int grade);
+
+	/* Exceptions */
+	struct GradeTooLowException : public std::exception
+	{
+		const char *what() const throw()
+		{
+			return "GradeTooLowExcepiton";
+		}	
+	};
+
+	struct GradeTooHighException : public std::exception
+	{
+		const char *what() const throw()
+		{
+			return "GradeTooHighException";
+		}
+	};
+	
 };
 
+std::ostream &operator<<(std::ostream &os, Bureaucrat buer);
 
 #endif

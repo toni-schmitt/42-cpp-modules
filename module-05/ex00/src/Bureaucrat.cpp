@@ -6,7 +6,7 @@
 /*   By: tschmitt <tschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 18:47:27 by tschmitt          #+#    #+#             */
-/*   Updated: 2022/01/31 19:00:54 by tschmitt         ###   ########.fr       */
+/*   Updated: 2022/02/10 14:59:30 by tschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,28 @@
 #include <iostream>
 
 /* Constructors */
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat() : _name("john")
 {
-	this->setGrade(150);
+	try
+	{
+		this->setGrade(150);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy)
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name("john")
 {
 	try
 	{
 		this->setGrade(copy.getGrade());
 	}
-	catch(const std::exception& e)
+	catch (const std::exception &e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
-}
-
-Bureaucrat::Bureaucrat(std::string name)
-{
-	this->setGrade(150);
 }
 
 /* Deconstructors */
@@ -53,12 +55,18 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &sec)
 	{
 		this->setGrade(sec.getGrade());
 	}
-	catch(const std::exception& e)
+	catch (const std::exception &e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
-	
+
 	return *this;
+}
+
+std::ostream &operator<<(std::ostream &os, Bureaucrat buer)
+{
+	os << buer.getName() << ", bureaucrat grade " << buer.getGrade();
+	return os;
 }
 
 /* Public Methods */
@@ -66,32 +74,44 @@ void Bureaucrat::incrementGrade()
 {
 	try
 	{
-		this->setGrade(this->getGrade() + 1);
+		this->setGrade(this->getGrade() - 1);
 	}
-	catch(const std::exception& e)
+	catch (const std::exception &e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
 }
 
+void Bureaucrat::decrementGrade()
+{
+	try
+	{
+		this->setGrade(this->getGrade() + 1);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}	
+}
+
 /* Getter */
-const std::string Bureaucrat::getName() const
+std::string Bureaucrat::getName() const
 {
 	return this->_name;
 }
 
-int Bureaucrat::getGrade() const
+unsigned int Bureaucrat::getGrade() const
 {
 	return this->_grade;
 }
 
 /* Setter */
-void Bureaucrat::setGrade(int grade)
+void Bureaucrat::setGrade(unsigned int grade)
 {
 	if (grade < 1)
-		return ;
+		throw Bureaucrat::GradeTooHighException();
 	if (grade > 150)
-		return ;
+		throw Bureaucrat::GradeTooLowException();
 	this->_grade = grade;
 }
 
