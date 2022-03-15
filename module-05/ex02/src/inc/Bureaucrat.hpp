@@ -13,7 +13,7 @@
 #if !defined(___BUREAUCRAT_HPP___)
 #define ___BUREAUCRAT_HPP___
 
-#include "Form.hpp"
+#include "AForm.hpp"
 class AForm;
 #include <string>
 #include <iostream>

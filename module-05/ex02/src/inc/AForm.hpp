@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#if !defined(___FORM_HPP___)
-#define ___FORM_HPP___
+#if !defined(___AFORM_HPP___)
+#define ___AFORM_HPP___
 
 #include "Bureaucrat.hpp"
 class Bureaucrat;
