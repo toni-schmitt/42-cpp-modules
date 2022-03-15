@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tschmitt <tschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -18,7 +18,7 @@ class Bureaucrat;
 #include <string>
 #include <exception>
 
-class Form
+class AForm
 {
 private:
 	/* Private Members */
@@ -29,14 +29,14 @@ private:
 
 public:
 	/* Constructors */
-	Form();
-	Form(const Form &copy);
-	Form(std::string name, unsigned int requredSignGrade, unsigned int requiredExecuteGrade);
+	AForm();
+	AForm(const AForm &copy);
+	AForm(std::string name, unsigned int requredSignGrade, unsigned int requiredExecuteGrade);
 	/* Deconstructors */
-	~Form();
+	~AForm();
 
 	/* Overloaded Operators */
-	Form &operator=(const Form &sec);
+	AForm &operator=(const AForm &sec);
 
 	/* Public Methods */
 	void beSigned(Bureaucrat buero);
@@ -67,6 +67,6 @@ public:
 	};
 };
 
-std::ostream &operator<<(std::ostream &os, Form form);
+std::ostream &operator<<(std::ostream &os, AForm form);
 
 #endif

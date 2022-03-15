@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tschmitt <tschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,34 +15,34 @@
 #include <iostream>
 
 /* Constructors */
-Form::Form() : _name("undefined"), _isSigned(false), _requiredSignGrade(1), _requiredExecuteGrade(1)
+AForm::AForm() : _name("undefined"), _isSigned(false), _requiredSignGrade(1), _requiredExecuteGrade(1)
 {
-	// std::cout << "Form Default Constructor called" << std::endl;
+	// std::cout << "AForm Default Constructor called" << std::endl;
 	/*CODE*/
 }
 
-Form::Form(const Form &copy) : _name(copy.getName()), _isSigned(copy.getStatus()), _requiredSignGrade(copy.getSignGrade()), _requiredExecuteGrade(copy.getExecuteGrade())
+AForm::AForm(const AForm &copy) : _name(copy.getName()), _isSigned(copy.getStatus()), _requiredSignGrade(copy.getSignGrade()), _requiredExecuteGrade(copy.getExecuteGrade())
 {
-	// std::cout << "Form Copy Constructor called" << std::endl;
+	// std::cout << "AForm Copy Constructor called" << std::endl;
 	/*CODE*/
 }
 
-Form::Form(std::string name, unsigned int requredSignGrade, unsigned int requiredExecuteGrade) : _name(name), _requiredSignGrade(requredSignGrade), _requiredExecuteGrade(requiredExecuteGrade)
+AForm::AForm(std::string name, unsigned int requredSignGrade, unsigned int requiredExecuteGrade) : _name(name), _requiredSignGrade(requredSignGrade), _requiredExecuteGrade(requiredExecuteGrade)
 {
 	this->_isSigned = false;
 }
 
 /* Deconstructors */
-Form::~Form()
+AForm::~AForm()
 {
-	// std::cout << "Form Deconstructor called" << std::endl;
+	// std::cout << "AForm Deconstructor called" << std::endl;
 	/*CODE*/
 }
 
 /* Overloaded Operators */
-Form &Form::operator=(const Form &sec)
+AForm &AForm::operator=(const AForm &sec)
 {
-	// std::cout << "Form Assignation operator called" << std::endl;
+	// std::cout << "AForm Assignation operator called" << std::endl;
 	if (this == &sec)
 		return *this;
 
@@ -50,32 +50,32 @@ Form &Form::operator=(const Form &sec)
 }
 
 /* Public Methods */
-void Form::beSigned(Bureaucrat buero)
+void AForm::beSigned(Bureaucrat buero)
 {
 	// if (buero.getGrade() <= this->getSignGrade())
 	if (this->getSignGrade() <= buero.getGrade())
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 
 	this->_isSigned = true;
 }
 
 /* Getter */
-std::string Form::getName() const
+std::string AForm::getName() const
 {
 	return this->_name;
 }
 
-bool Form::getStatus() const
+bool AForm::getStatus() const
 {
 	return this->_isSigned;
 }
 
-unsigned int Form::getSignGrade() const
+unsigned int AForm::getSignGrade() const
 {
 	return this->_requiredSignGrade;
 }
 
-unsigned int Form::getExecuteGrade() const
+unsigned int AForm::getExecuteGrade() const
 {
 	return this->_requiredExecuteGrade;
 }

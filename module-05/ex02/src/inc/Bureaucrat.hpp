@@ -14,7 +14,7 @@
 #define ___BUREAUCRAT_HPP___
 
 #include "Form.hpp"
-class Form;
+class AForm;
 #include <string>
 #include <iostream>
 #include <exception>
@@ -40,7 +40,7 @@ public:
 	/* Public Methods */
 	void incrementGrade();
 	void decrementGrade();
-	void signForm(Form form);
+	void signForm(AForm form);
 
 	/* Getter */
 	std::string getName() const;

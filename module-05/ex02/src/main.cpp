@@ -49,7 +49,7 @@ int main()
 	}
 	std::cout << ben << std::endl;
 
-	Form form42("Form 42", 3, 2);
+	AForm form42("AForm 42", 3, 2);
 
 	ben.signForm(form42);
 
