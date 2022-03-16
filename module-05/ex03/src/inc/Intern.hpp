@@ -2,6 +2,9 @@
 #define ___INTERN_HPP___
 
 #include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 class Intern
 {
@@ -18,6 +21,9 @@ public:
 	Intern &operator=(const Intern &sec);
 
 	/* Public Methods */
+	AForm *createShrubberyCreationForm(const std::string target) const;
+	AForm *createRobotomyRequestForm(const std::string target) const;
+	AForm *createPresidentialPardonForm(const std::string target) const;
 	AForm *makeForm(std::string form_name, std::string form_target) const;
 
 	/* Getter */

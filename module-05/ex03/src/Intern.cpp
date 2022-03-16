@@ -13,6 +13,7 @@ Intern::Intern(const Intern &copy)
 {
 	// std::cout << "Intern Copy Constructor called" << std::endl;
 	/*CODE*/
+	(void)copy;
 }
 
 /* Deconstructors */
@@ -34,8 +35,44 @@ Intern &Intern::operator=(const Intern &sec)
 }
 
 /* Public Methods */
+AForm *Intern::createShrubberyCreationForm(const std::string target) const
+{
+	return new ShrubberyCreationForm(target);
+}
+
+AForm *Intern::createRobotomyRequestForm(const std::string target) const
+{
+	return new RobotomyRequestForm(target);
+}
+
+AForm *Intern::createPresidentialPardonForm(const std::string target) const
+{
+	return new PresidentialPardonForm(target);
+}
+
+
 AForm *Intern::makeForm(std::string form_name, std::string form_target) const 
 {
+	static const std::string aviable_forms[] = {
+		"ShrubberyCreation",
+		"RobotomyRequest",
+		"PresidentialPardon"
+	};
+
+	static AForm *(Intern::* const creation_functions[])(const std::string target) const = {
+		&Intern::createShrubberyCreationForm,
+		&Intern::createRobotomyRequestForm,
+		&Intern::createPresidentialPardonForm,
+	};
+
+
+	for (size_t i = 0; i < aviable_forms->length(); i++)
+	{
+		if (form_name == aviable_forms[i])
+			return (this->*creation_functions[i])(form_target);
+	}
+	
+	std::cerr << form_name << " for " << form_target << " not found" << std::endl;
 	return NULL;
 }
 
