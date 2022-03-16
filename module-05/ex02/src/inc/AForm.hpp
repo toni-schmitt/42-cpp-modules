@@ -33,7 +33,7 @@ public:
 	AForm(const AForm &copy);
 	AForm(std::string name, unsigned int requredSignGrade, unsigned int requiredExecuteGrade);
 	/* Deconstructors */
-	~AForm();
+	virtual ~AForm() = 0;
 
 	/* Overloaded Operators */
 	AForm &operator=(const AForm &sec);
@@ -76,6 +76,6 @@ public:
 	};
 };
 
-std::ostream &operator<<(std::ostream &os, AForm form);
+// std::ostream &operator<<(std::ostream &os, AForm form);
 
 #endif
