@@ -51,6 +51,19 @@ Bureaucrat::Bureaucrat(const std::string name) : _name(name)
 	}
 }
 
+
+Bureaucrat::Bureaucrat(const std::string name, unsigned int grade) : _name(name)
+{
+	try
+	{
+		this->setGrade(grade);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+}
+
 /* Deconstructors */
 Bureaucrat::~Bureaucrat()
 {
@@ -106,7 +119,7 @@ void Bureaucrat::decrementGrade()
 	}
 }
 
-void Bureaucrat::signForm(AForm form)
+void Bureaucrat::signForm(AForm &form)
 {
 	try
 	{
@@ -114,11 +127,24 @@ void Bureaucrat::signForm(AForm form)
 	}
 	catch (const std::exception &e)
 	{
-		std::cout << this->_name
-				  << " couldn't sign " << form.getName() << " because " << e.what() << "." << std::endl;
+		std::cout << this->_name << " couldn't sign " << form.getName() << " because " << e.what() << "." << std::endl;
 		return;
 	}
-	std::cout << this->_name << " signed" << form.getName() << std::endl;
+	std::cout << this->_name << " signed " << form.getName() << std::endl;
+}
+
+void Bureaucrat::executeForm(AForm const &form)
+{
+	try
+	{
+		form.execute(*this);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << this->_name << " couldn\'t sign " << form.getName() << " because " << e.what() << "." << std::endl;
+		return;
+	}
+	std::cout << this->_name << " executed " << form.getName() << std::endl;
 }
 
 /* Getter */

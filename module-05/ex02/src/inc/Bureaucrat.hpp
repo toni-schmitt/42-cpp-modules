@@ -31,6 +31,7 @@ public:
 	Bureaucrat();
 	Bureaucrat(const Bureaucrat &copy);
 	Bureaucrat(const std::string name);
+	Bureaucrat(const std::string name, unsigned int grade);
 	/* Deconstructors */
 	~Bureaucrat();
 
@@ -40,7 +41,8 @@ public:
 	/* Public Methods */
 	void incrementGrade();
 	void decrementGrade();
-	void signForm(AForm form);
+	void signForm(AForm &form);
+	void executeForm(AForm const &form);
 
 	/* Getter */
 	std::string getName() const;
