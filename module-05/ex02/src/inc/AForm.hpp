@@ -39,7 +39,8 @@ public:
 	AForm &operator=(const AForm &sec);
 
 	/* Public Methods */
-	void beSigned(Bureaucrat buero);
+	void beSigned(Bureaucrat const &buero);
+	virtual void execute(Bureaucrat const &executor) const;
 
 	/* Getter */
 	std::string getName() const;
@@ -63,6 +64,14 @@ public:
 		const char *what() const throw()
 		{
 			return "Grade too high";
+		}
+	};
+
+	struct FormNotSignedException : public std::exception
+	{
+		const char *what() const throw()
+		{
+			return "Form not signed";
 		}
 	};
 };

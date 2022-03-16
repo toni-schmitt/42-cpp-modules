@@ -50,13 +50,22 @@ AForm &AForm::operator=(const AForm &sec)
 }
 
 /* Public Methods */
-void AForm::beSigned(Bureaucrat buero)
+void AForm::beSigned(Bureaucrat const &buero)
 {
 	// if (buero.getGrade() <= this->getSignGrade())
-	if (this->getSignGrade() <= buero.getGrade())
+	if (this->getSignGrade() < buero.getGrade())
 		throw AForm::GradeTooLowException();
 
 	this->_isSigned = true;
+}
+
+void AForm::execute(Bureaucrat const &executor) const
+{
+	if (!this->_isSigned)
+		throw AForm::FormNotSignedException();
+
+	if (this->getExecuteGrade() < executor.getGrade())
+		throw AForm::GradeTooLowException();
 }
 
 /* Getter */
