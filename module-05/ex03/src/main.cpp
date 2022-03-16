@@ -14,13 +14,14 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
 #include <iostream>
 
-void test_presidentail_pardon()
+#include <iostream>
+
+void test_presidentail_pardon(AForm &valid_form, AForm &invalid_form)
 {
-	std::cout << "Create Valid Presidential Pardon Form" << std::endl;
-	PresidentialPardonForm valid_form("rick");
 
 
 	std::cout << "Create valid Signer and Executor for Presidential Pardon Form" << std::endl;
@@ -32,8 +33,6 @@ void test_presidentail_pardon()
 	valid_singer.signForm(valid_form);
 	valid_executor.executeForm(valid_form);
 
-	std::cout << "\nCreate Invalid Presidential Pardon Form" << std::endl;
-	PresidentialPardonForm invalid_form("rick2");
 
 	std::cout << "Create invalid Signer and Executor for Presidential Pardon From" << std::endl;
 	Bureaucrat invlaid_signer("Invalid Signer", 26);
@@ -49,10 +48,8 @@ void test_presidentail_pardon()
 	
 }
 
-void test_robotomy()
+void test_robotomy(AForm &valid_form, AForm &invalid_form)
 {
-	std::cout << "Create Valid Presidential Pardon Form" << std::endl;
-	RobotomyRequestForm valid_form("john");
 
 
 	std::cout << "Create valid Signer and Executor for Presidential Pardon Form" << std::endl;
@@ -64,8 +61,6 @@ void test_robotomy()
 	valid_singer.signForm(valid_form);
 	valid_executor.executeForm(valid_form);
 
-	std::cout << "\nCreate Invalid Presidential Pardon Form" << std::endl;
-	RobotomyRequestForm invalid_form("john2");
 
 	std::cout << "Create invalid Signer and Executor for Presidential Pardon From" << std::endl;
 	Bureaucrat invlaid_signer("Invalid Signer", 73);
@@ -81,11 +76,8 @@ void test_robotomy()
 	
 }
 
-void test_shrubbery()
+void test_shrubbery(AForm &valid_form, AForm &invalid_form)
 {
-	std::cout << "Create Valid Presidential Pardon Form" << std::endl;
-	ShrubberyCreationForm valid_form("home");
-
 
 	std::cout << "Create valid Signer and Executor for Presidential Pardon Form" << std::endl;
 	Bureaucrat valid_singer("Valid Signer", 145);
@@ -95,9 +87,6 @@ void test_shrubbery()
 	std::cout << "\nAttempt to sign and execute form with valid Bureaucrat\n" << std::endl;
 	valid_singer.signForm(valid_form);
 	valid_executor.executeForm(valid_form);
-
-	std::cout << "\nCreate Invalid Presidential Pardon Form" << std::endl;
-	ShrubberyCreationForm invalid_form("home2");
 
 	std::cout << "Create invalid Signer and Executor for Presidential Pardon From" << std::endl;
 	Bureaucrat invlaid_signer("Invalid Signer", 146);
@@ -112,59 +101,46 @@ void test_shrubbery()
 	valid_executor.executeForm(invalid_form);
 	
 }
-
 int main()
 {
-	std::cout << "\n\nTesting Shrubbery Creation Form\n\n" << std::endl;
-	test_shrubbery();
-	std::cout << "\n\nTesting Robotomy Request Form\n\n" << std::endl;
-	test_robotomy();
-	std::cout << "\n\nTesting Presidentail Pardon Form\n\n" << std::endl;
-	test_presidentail_pardon();
-}
+	Intern intern;
+	AForm *valid_tmp;
+	AForm *invalid_tmp;
 
-int mmain()
-{
-	Bureaucrat ben("ben");
+	std::cout << "\n\nTest Intern and Shrubbery Creation Form\n\n" << std::endl;
+	std::cout << "Let Intern create Valid ShrubberyCreationForm" << std::endl;
+	valid_tmp = intern.makeForm("ShrubberyCreation", "home");
+	std::cout << "Let Intern create Invalid ShrubberyCreationForm" << std::endl;
+	invalid_tmp = intern.makeForm("ShrubberyCreation", "invalid_home");
+	std::cout << "Test ShrubberyCreationForm with Froms created by Intern" << std::endl;
+	test_shrubbery(*valid_tmp, *invalid_tmp);
+	delete valid_tmp;
+	delete invalid_tmp;
 
-	std::cout << ben << std::endl;
+	std::cout << "\n\nTest Intern and RobotomyRequestForm\n\n" << std::endl;
+	std::cout << "Let Intern create Valid RobotomyRequestForm" << std::endl;
+	valid_tmp = intern.makeForm("RobotomyRequest", "home");
+	std::cout << "Let Intern create Invalid RobotomyRequestForm" << std::endl;
+	invalid_tmp = intern.makeForm("RobotomyRequest", "invalid_home");
+	std::cout << "Test RobotomyRequestForm with Froms created by Intern" << std::endl;
+	test_robotomy(*valid_tmp, *invalid_tmp);
+	delete valid_tmp;
+	delete invalid_tmp;
 
-	ben.incrementGrade();
-	std::cout << ben << std::endl;
-	ben.incrementGrade();
-	std::cout << ben << std::endl;
-	ben.incrementGrade();
-	std::cout << ben << std::endl;
-	ben.incrementGrade();
-	std::cout << ben << std::endl;
-	ben.incrementGrade();
-	std::cout << ben << std::endl;
-	ben.incrementGrade();
-	std::cout << ben << std::endl;
-	ben.incrementGrade();
-	std::cout << ben << std::endl;
-	ben.incrementGrade();
-	std::cout << ben << std::endl;
-	ben.decrementGrade();
-	std::cout << ben << std::endl;
+	std::cout << "\n\nTest Intern and PresidentialPardonForm\n\n" << std::endl;
+	std::cout << "Let Intern create Valid PresidentialPardonForm" << std::endl;
+	valid_tmp = intern.makeForm("PresidentialPardon", "home");
+	std::cout << "Let Intern create Invalid PresidentialPardonForm" << std::endl;
+	invalid_tmp = intern.makeForm("PresidentialPardon", "invalid_home");
+	std::cout << "Test PresidentialPardonForm with Froms created by Intern" << std::endl;
+	test_presidentail_pardon(*valid_tmp, *invalid_tmp);
+	delete valid_tmp;
+	delete invalid_tmp;
 
-	try
-	{
-		ben.setGrade(170);
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	std::cout << ben << std::endl;
 
-	AForm form42("AForm 42", 3, 2);
-
-	ben.signForm(form42);
-
-	Bureaucrat john("john");
-	john.setGrade(1);
-	john.signForm(form42);
-
-	return 0;
+	std::cout << "\n\nTest Intern and an Invalid Form\n\n" << std::endl;
+	std::cout << "Let Intern create Valid non existent Form" << std::endl;
+	valid_tmp = intern.makeForm("non-existens", "home");
+	if (valid_tmp == NULL)
+		std::cout << "Intern created an non existent Form" << std::endl;
 }
