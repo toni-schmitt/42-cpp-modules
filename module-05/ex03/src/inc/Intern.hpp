@@ -18,7 +18,7 @@ public:
 	Intern &operator=(const Intern &sec);
 
 	/* Public Methods */
-	AForm *makeForm(std::string name) const;
+	AForm *makeForm(std::string form_name, std::string form_target) const;
 
 	/* Getter */
 

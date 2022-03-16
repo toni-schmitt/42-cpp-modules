@@ -34,7 +34,7 @@ Intern &Intern::operator=(const Intern &sec)
 }
 
 /* Public Methods */
-AForm *Intern::makeForm(std::string name) const 
+AForm *Intern::makeForm(std::string form_name, std::string form_target) const 
 {
 	return NULL;
 }
