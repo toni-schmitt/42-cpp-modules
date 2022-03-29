@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 
 /* Constructors */
 RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy Request Form", 72, 45)
@@ -46,7 +47,7 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 
 	std::cout << "brrrrr" << std::endl;
 	
-	std::srand(std::time(NULL));
+	std::srand(time(NULL));
 	int rnd = std::rand() % 100;
 	std::string result = "";
 	if (rnd > 50)
