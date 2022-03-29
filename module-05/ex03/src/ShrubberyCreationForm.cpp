@@ -38,23 +38,13 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return *this;
 }
 
-//        _-_
-//     /~~   ~~\
-//  /~~         ~~\
-// {               }
-//  \  _-     -_  /
-//    ~  \\ //  ~
-// _- -   | | _- _
-//   _ -  | |   -_
-//       // \\
-
 /* Public Methods */
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	AForm::execute(executor);
 
 	std::ofstream shrubbery;
-	shrubbery.open(this->_target + "_shrubbery");
+	shrubbery.open((this->_target + "_shrubbery").c_str());
 	shrubbery << "        _-_" << std::endl;
 	shrubbery << "     /~~   ~~\\" << std::endl;
 	shrubbery << "  /~~         ~~\\" << std::endl;
