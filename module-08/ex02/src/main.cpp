@@ -54,7 +54,10 @@ void testAsList()
 
 int main()
 {
+	std::cout << "----------------------" << std::endl;
 	testMutant();
+	std::cout << "----------------------" << std::endl;
 	testAsList();
+	std::cout << "----------------------" << std::endl;
 	return 0;
 }
