@@ -33,7 +33,7 @@ void testAsList()
 	std::list<int> asList;
 	asList.push_back(5);
 	asList.push_back(17);
-	std::cout << asList.top() << std::endl;
+	std::cout << asList.back() << std::endl;
 	asList.pop_back();
 	std::cout << asList.size() << std::endl;
 	asList.push_back(3);
