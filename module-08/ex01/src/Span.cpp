@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <limits>
+#include <algorithm>
 
 /* Constructors */
 Span::Span() : _maxElements(0)
@@ -38,14 +39,15 @@ Span &Span::operator=(const Span &sec)
 /* Public Methods */
 int Span::shortestSpan() const
 {
-	if (this->_elements.size() == 0 || this->_elements.size() == 1)
+	if (this->_elements.size() <= 1)
 		throw NoSpanFoundException();
 
 	std::vector<int> copy(this->_elements);
 	std::sort(copy.begin(), copy.end());
 
+	const std::vector<int>::iterator lastElement = copy.end() - 1;
 	int minSpan = std::numeric_limits<int>::max();
-	for (std::vector<int>::iterator it = copy.begin(); it != copy.end(); it++)
+	for (std::vector<int>::iterator it = copy.begin(); it != lastElement; it++)
 	{
 		minSpan = std::min(minSpan, *(it + 1) - *it);
 	}
@@ -57,9 +59,9 @@ int Span::longestSpan() const
 	if (this->_elements.size() == 0 || this->_elements.size() == 1)
 		throw NoSpanFoundException();
 
-	std::vector<int> copy(this->_elements);
-	std::sort(copy.begin(), copy.end());
-	return copy.back() - copy.front();
+	int max = *std::max_element(this->_elements.begin(), this->_elements.end());
+	int min = *std::min_element(this->_elements.begin(), this->_elements.end());
+	return max - min;
 }
 
 void Span::addNumber(int nbr)
