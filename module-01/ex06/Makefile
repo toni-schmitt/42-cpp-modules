@@ -13,10 +13,10 @@
 CC = c++
 CFLAGS = -std=c++98 -Wall -Werror -Wextra
 
-SRC = main.cpp Karen.cpp
+SRC = main.cpp Harl.cpp
 OBJ = $(SRC:.cpp=.o)
 
-BIN = karenFilter
+BIN = harlFilter
 
 all: $(BIN)
 

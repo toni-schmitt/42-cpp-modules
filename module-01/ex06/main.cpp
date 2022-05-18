@@ -10,27 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Karen.hpp"
+#include "Harl.hpp"
 
 #include <iostream>
+#include <string>
 
 
-int main(void)
+int main(int argc, char *argv[])
 {
-	Karen karen;
+	if (argc != 2)
+	{
+		std::cout << "Usage:" << std::endl
+			<< "\t" << argv[0] << " \"LogLevel\"" << std::endl;
+		return 1;
+	}
 
-	karen.complain("info");
-	karen.complain("debug");
-	karen.complain("warning");
-	karen.complain("error");
-	karen.complain("info");
-	karen.complain("debug");
-	karen.complain("warning");
-	karen.complain("error");
-	karen.complain("info");
-	std::cout << "Will not find \"not_found\"" << std::endl;
-	karen.complain("not_found");
-	karen.complain("error");
+	std::string log_lvl = argv[1];
+
+	Harl harl;
+
+	harl.complain(log_lvl);
 	
 	return 0;
 }

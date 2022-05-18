@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Karen.hpp                                          :+:      :+:    :+:   */
+/*   Harl.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toni <toni@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -16,7 +16,7 @@
 #include <string>
 #include <map>
 
-class Karen
+class Harl
 {
 private:
 
@@ -28,8 +28,8 @@ private:
 public:
 	void complain(std::string error_level);
 
-	Karen() {};
-	~Karen() {};
+	Harl() {};
+	~Harl() {};
 };
 
 #endif
