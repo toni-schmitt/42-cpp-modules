@@ -10,26 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Karen.hpp"
+#include "Harl.hpp"
 
 #include <iostream>
 
 int main(void)
 {
-	Karen karen;
+	Harl harl;
 	
-	karen.complain("info");
-	karen.complain("debug");
-	karen.complain("warning");
-	karen.complain("error");
-	karen.complain("info");
-	karen.complain("debug");
-	karen.complain("warning");
-	karen.complain("error");
-	karen.complain("info");
+	harl.complain("info");
+	harl.complain("debug");
+	harl.complain("warning");
+	harl.complain("error");
+	harl.complain("info");
+	harl.complain("debug");
+	harl.complain("warning");
+	harl.complain("error");
+	harl.complain("info");
 	std::cout << "Will not find \"not_found\"" << std::endl;
-	karen.complain("not_found");
-	karen.complain("error");
+	harl.complain("not_found");
+	harl.complain("error");
 
 	return 0;
 }
