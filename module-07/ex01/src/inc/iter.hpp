@@ -11,7 +11,7 @@ void iter(T *array, int length, void (*f)(const T &val))
 }
 
 template <typename T>
-void print(const T &val)
+void printi(const T &val)
 {
 	std::cout << val << std::endl;
 }

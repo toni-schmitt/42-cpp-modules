@@ -3,19 +3,19 @@
 void testIntArr()
 {
 	int arr[] = {5, 123, 3634, 13423534, 1242352};
-	iter(arr, 5, &print);
+	iter(arr, 5, &printi);
 }
 
 void testFloatArr()
 {
 	float arr[] = {12312.3923f, 29384.234f, 12312.9f, 123.923234f};
-	iter(arr, 4, &print);
+	iter(arr, 4, &printi);
 }
 
 void testStringArr()
 {
 	std::string arr[] = {"hello", "world", "how", "are", "you", "doing"};
-	iter(arr, 6, &print);
+	iter(arr, 6, &printi);
 }
 
 int main(void)
