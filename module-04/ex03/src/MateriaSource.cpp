@@ -32,7 +32,7 @@ MateriaSource::MateriaSource(const MateriaSource &copy)
 		if (this->_inventory[i] != nullptr)
 			delete this->_inventory[i];
 	
-		this->_inventory[i] = copy._inventory[i];
+		this->_inventory[i] = copy._inventory[i]->clone();
 	}
 }
 
@@ -58,7 +58,7 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &sec)
 		if (this->_inventory[i] != nullptr)
 			delete this->_inventory[i];
 
-		this->_inventory[i] = sec._inventory[i];
+		this->_inventory[i] = sec._inventory[i]->clone();
 	}
 
 	return *this;
@@ -71,7 +71,7 @@ void MateriaSource::learnMateria(AMateria *m)
 	{
 		if (this->_inventory[i] == nullptr)
 		{
-			this->_inventory[i] = m;
+			this->_inventory[i] = m->clone();
 			break;
 		}
 	}

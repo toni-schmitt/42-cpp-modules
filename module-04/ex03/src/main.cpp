@@ -30,8 +30,12 @@ int main(void)
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
 
+	delete tmp;
+
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
+
+	delete tmp;
 
 	ICharacter *bob = new Character("bob");
 
@@ -42,6 +46,6 @@ int main(void)
 	delete me;
 	delete src;
 
-	// system("leaks inf");
+	system("leaks inf");
 	return 0;
 }
