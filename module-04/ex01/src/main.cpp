@@ -86,27 +86,55 @@ void testBrains()
 {
 	std::cout << "\n\n-- Testing Brains? --\n\n";
 
+	std::cout << "\n\n-- Testing Deepcopy --\n\n";
+
+	std::cout << std::endl
+			  << "1. Create a Dog (smart_boi) with a Brain from default constructor" << std::endl
+			  << std::endl;
+
+	Dog *smart_boi = new Dog();
+
+	std::cout << std::endl
+			  << "2. Creat a Dog (smart_boi_copy) with a Brain from copy constructor (from smart_boi)" << std::endl
+			  << std::endl;
+
+	Dog *smart_boi_copy = new Dog(*smart_boi);
+
+	std::cout << std::endl
+			  << "3. Testing both Brains (filling with Ideas)" << std::endl
+			  << std::endl;
+
 	std::cout
-		<< "--\n"
-		<< "Creating a Dog, which inherits Animal...\n"
-		<< "First Animal constructor should be called\n"
-		<< "Second Dog constructor should be called\n"
-		<< "At third, the Dog constructor should create a Brain\n"
-		<< "So, at third, Brain constructor should be called\n"
-		<< "--\n\n";
+		<< "smart_boi->haveIdea(\"eat\");" << std::endl
+		<< "smart_boi->haveIdea(\"eat more\");" << std::endl
+		<< std::endl
+		<< "smart_boi_copy->haveIdea(\"eat\");" << std::endl
+		<< "smart_boi_copy->haveIdea(\"eat more\");"
+		<< std::endl;
 
-	const Animal *brain_dog = new Dog();
+	smart_boi->haveIdea("eat");
+	smart_boi->haveIdea("eat more");
+
+	smart_boi_copy->haveIdea("eat");
+	smart_boi_copy->haveIdea("eat more");
+
+	std::cout << std::endl
+			  << "4. Deleteing original smart_boi. Copy of original smart_boi should still have all ideas" << std::endl
+			  << std::endl;
+
+	delete smart_boi;
+
+	std::cout << std::endl
+			  << "5. Testing smart_boi_copy's brain. smart_boi_copy's brain should be accessable and not SEGFAULT" << std::endl
+			  << std::endl;
 
 	std::cout
-		<< "\n--\n"
-		<< "Now deleting a Dog\n"
-		<< "First Dog deconstructor should be called\n"
-		<< "Second Brain deconstructor should be called\n"
-		<< "At last Animal deconstructor should be called\n"
-		<< "Here Brain got deconstructed inside the Dog deconstructor, so it got called at second\n"
-		<< "--\n\n";
+		<< "smart_boi_copy->looseIdea(\"eat more\");" << std::endl
+		<< "smart_boi_copy->haveIdea(\"eat less\");"
+		<< std::endl;
 
-	delete brain_dog;
+	smart_boi_copy->looseIdea("eat more");
+	smart_boi_copy->haveIdea("eat less");
 }
 
 int main()
