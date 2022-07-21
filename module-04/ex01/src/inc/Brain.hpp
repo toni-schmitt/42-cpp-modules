@@ -32,8 +32,11 @@ public:
 	Brain &operator=(const Brain &sec);
 
 	/* Public Methods */
+	void addIdea(std::string idea);
+	void removeIdea(std::string idea);
 
 	/* Getter */
+	std::string getIdea(unsigned int index);
 
 	/* Setter */
 

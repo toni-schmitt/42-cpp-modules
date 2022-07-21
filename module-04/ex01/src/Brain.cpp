@@ -49,8 +49,37 @@ Brain &Brain::operator=(const Brain &sec)
 }
 
 /* Public Methods */
+void Brain::addIdea(std::string idea)
+{
+	static unsigned int index = 0;
+
+	if (index < 0 || index >= MaxIdeas)
+		return;
+
+	this->_ideas[index] = idea;
+
+	++index;
+}
+
+void Brain::removeIdea(std::string idea)
+{
+	for (unsigned int i = 0; i < MaxIdeas; ++i)
+	{
+		if (this->_ideas[i] == idea)
+		{
+			this->_ideas[i] = "";
+			return;
+		}
+	}
+}
 
 /* Getter */
+std::string Brain::getIdea(unsigned int index)
+{
+	if (index < 0 || index > this->MaxIdeas)
+		return "";
+	return this->_ideas[index];
+}
 
 /* Setter */
 
