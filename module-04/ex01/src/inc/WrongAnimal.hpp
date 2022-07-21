@@ -33,7 +33,7 @@ public:
 	WrongAnimal &operator=(const WrongAnimal &sec);
 
 	/* Public Methods */
-	virtual void makeSound() const;
+	void makeSound() const;
 
 	/* Getter */
 	std::string getType() const;
