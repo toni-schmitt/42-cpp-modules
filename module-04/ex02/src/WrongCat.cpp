@@ -15,13 +15,13 @@
 #include <iostream>
 
 /* Constructors */
-WrongCat::WrongCat()
+WrongCat::WrongCat() : WrongAnimal()
 {
 	std::cout << "WrongCat Default Constructor called" << std::endl;
 	this->_type = "WrongCat";
 }
 
-WrongCat::WrongCat(const WrongCat &copy)
+WrongCat::WrongCat(const WrongCat &copy) : WrongAnimal(copy)
 {
 	std::cout << "WrongCat Copy Constructor called" << std::endl;
 	this->_type = copy._type;
@@ -51,10 +51,6 @@ void WrongCat::makeSound() const
 }
 
 /* Getter */
-std::string WrongCat::getType() const
-{
-	return this->_type;
-}
 
 /* Setter */
 

@@ -6,7 +6,7 @@
 /*   By: tschmitt <tschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:55:54 by tschmitt          #+#    #+#             */
-/*   Updated: 2022/02/01 17:32:48 by tschmitt         ###   ########.fr       */
+/*   Updated: 2022/02/01 15:37:40 by tschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ public:
 
 	/* Public Methods */
 	void makeSound() const;
+	void haveIdea(std::string idea);
+	void looseIdea(std::string idea);
 
 	/* Getter */
 	std::string getType() const;

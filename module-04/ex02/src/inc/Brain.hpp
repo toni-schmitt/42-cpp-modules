@@ -19,7 +19,8 @@ class Brain
 {
 private:
 	/* Private Members */
-	std::string _ideas[100];
+	static const unsigned int MaxIdeas = 100;
+	std::string _ideas[MaxIdeas];
 public:
 	/* Constructors */
 	Brain();
@@ -31,8 +32,11 @@ public:
 	Brain &operator=(const Brain &sec);
 
 	/* Public Methods */
+	void addIdea(std::string idea);
+	void removeIdea(std::string idea);
 
 	/* Getter */
+	std::string getIdea(unsigned int index);
 
 	/* Setter */
 

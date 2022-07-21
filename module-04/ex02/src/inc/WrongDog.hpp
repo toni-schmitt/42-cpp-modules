@@ -15,7 +15,7 @@
 
 #include "WrongAnimal.hpp"
 
-class WrongDog : public AWrongAnimal
+class WrongDog : public WrongAnimal
 {
 private:
 	/* Private Members */
@@ -33,7 +33,6 @@ public:
 	void makeSound() const;
 
 	/* Getter */
-	std::string getType() const;
 
 	/* Setter */
 

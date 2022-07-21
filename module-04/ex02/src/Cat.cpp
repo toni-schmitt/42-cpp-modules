@@ -6,7 +6,7 @@
 /*   By: tschmitt <tschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:58:50 by tschmitt          #+#    #+#             */
-/*   Updated: 2022/02/01 17:34:04 by tschmitt         ###   ########.fr       */
+/*   Updated: 2022/02/01 15:42:52 by tschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Cat::Cat(const Cat &copy)
 {
 	std::cout << "Cat Copy Constructor called" << std::endl;
 	this->_type = copy._type;
-	this->_pBrain = copy._pBrain;
+	this->_pBrain = new Brain(*copy._pBrain);
 }
 
 /* Deconstructors */
@@ -44,6 +44,7 @@ Cat &Cat::operator=(const Cat &sec)
 		return *this;
 
 	this->_type = sec._type;
+	this->_pBrain = new Brain(*sec._pBrain);
 	return *this;
 }
 
@@ -51,6 +52,16 @@ Cat &Cat::operator=(const Cat &sec)
 void Cat::makeSound() const
 {
 	std::cout << "meow" << std::endl;
+}
+
+void Cat::haveIdea(std::string idea)
+{
+	this->_pBrain->addIdea(idea);
+}
+
+void Cat::looseIdea(std::string idea)
+{
+	this->_pBrain->removeIdea(idea);
 }
 
 /* Getter */

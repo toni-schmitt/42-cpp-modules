@@ -15,7 +15,7 @@
 
 #include <string>
 
-class AWrongAnimal
+class WrongAnimal
 {
 private:
 	/* Private Members */
@@ -24,16 +24,19 @@ protected:
 	std::string _type;
 public:
 	/* Constructors */
+	WrongAnimal();
+	WrongAnimal(const WrongAnimal& copy);
 	/* Deconstructors */
-	virtual ~AWrongAnimal() = 0;
+	virtual ~WrongAnimal();
 
 	/* Overloaded Operators */
+	WrongAnimal &operator=(const WrongAnimal &sec);
 
 	/* Public Methods */
-	virtual void makeSound() const = 0;
+	virtual void makeSound() const;
 
 	/* Getter */
-	virtual std::string getType() const = 0;
+	std::string getType() const;
 
 	/* Setter */
 

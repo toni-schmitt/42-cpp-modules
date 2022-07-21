@@ -23,7 +23,7 @@ Brain::Brain()
 Brain::Brain(const Brain &copy)
 {
 	std::cout << "Brain Copy Constructor called" << std::endl;
-	for (size_t i = 0; i < sizeof(this->_ideas) / sizeof(this->_ideas[0]) && i < sizeof(copy._ideas) / sizeof(copy._ideas); i++)
+	for (size_t i = 0; i < this->MaxIdeas; i++)
 	{
 		this->_ideas[i] = copy._ideas[i];
 	}
@@ -41,7 +41,7 @@ Brain &Brain::operator=(const Brain &sec)
 	std::cout << "Brain Assignation operator called" << std::endl;
 	if (this == &sec)
 		return *this;
-	for (size_t i = 0; i < sizeof(this->_ideas) / sizeof(this->_ideas[0]) && i < sizeof(sec._ideas) / sizeof(sec._ideas); i++)
+	for (size_t i = 0; i < this->MaxIdeas; i++)
 	{
 		this->_ideas[i] = sec._ideas[i];
 	}
@@ -49,8 +49,37 @@ Brain &Brain::operator=(const Brain &sec)
 }
 
 /* Public Methods */
+void Brain::addIdea(std::string idea)
+{
+	static unsigned int index = 0;
+
+	if (index < 0 || index >= MaxIdeas)
+		return;
+
+	this->_ideas[index] = idea;
+
+	++index;
+}
+
+void Brain::removeIdea(std::string idea)
+{
+	for (unsigned int i = 0; i < MaxIdeas; ++i)
+	{
+		if (this->_ideas[i] == idea)
+		{
+			this->_ideas[i] = "";
+			return;
+		}
+	}
+}
 
 /* Getter */
+std::string Brain::getIdea(unsigned int index)
+{
+	if (index < 0 || index > this->MaxIdeas)
+		return "";
+	return this->_ideas[index];
+}
 
 /* Setter */
 

@@ -15,13 +15,13 @@
 #include <iostream>
 
 /* Constructors */
-WrongDog::WrongDog()
+WrongDog::WrongDog() : WrongAnimal()
 {
 	std::cout << "WrongDog Default Constructor called" << std::endl;
 	this->_type = "WrongDog";
 }
 
-WrongDog::WrongDog(const WrongDog &copy)
+WrongDog::WrongDog(const WrongDog &copy) : WrongAnimal(copy)
 {
 	std::cout << "WrongDog Copy Constructor called" << std::endl;
 	this->_type = copy._type;
@@ -51,10 +51,6 @@ void WrongDog::makeSound() const
 }
 
 /* Getter */
-std::string WrongDog::getType() const
-{
-	return this->_type;
-}
 
 /* Setter */
 
