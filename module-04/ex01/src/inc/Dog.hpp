@@ -33,6 +33,8 @@ public:
 
 	/* Public Methods */
 	void makeSound() const;
+	void haveIdea(std::string idea);
+	void looseIdea(std::string idea);
 
 	/* Getter */
 

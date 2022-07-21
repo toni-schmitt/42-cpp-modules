@@ -54,6 +54,16 @@ void Cat::makeSound() const
 	std::cout << "meow" << std::endl;
 }
 
+void Cat::haveIdea(std::string idea)
+{
+	this->_pBrain->addIdea(idea);
+}
+
+void Cat::looseIdea(std::string idea)
+{
+	this->_pBrain->removeIdea(idea);
+}
+
 /* Getter */
 
 /* Setter */

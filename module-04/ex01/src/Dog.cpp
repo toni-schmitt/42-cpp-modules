@@ -54,6 +54,16 @@ void Dog::makeSound() const
 	std::cout << "wuff" << std::endl;
 }
 
+void Dog::haveIdea(std::string idea)
+{
+	this->_pBrain->addIdea(idea);
+}
+
+void Dog::looseIdea(std::string idea)
+{
+	this->_pBrain->removeIdea(idea);
+}
+
 /* Getter */
 
 /* Setter */
