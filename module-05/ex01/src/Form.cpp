@@ -49,8 +49,16 @@ Form &Form::operator=(const Form &sec)
 	return *this;
 }
 
+std::ostream &operator<<(std::ostream &os, const Form &form)
+{
+	os << "Form " << form.getName() << " is";
+	form.getStatus() ? os << " " : os << " not ";
+	os << "signed (Sign Grade: " << form.getSignGrade() << ", Execution Grade: " << form.getExecuteGrade() << ")";
+	return os;
+}
+
 /* Public Methods */
-void Form::beSigned(Bureaucrat buero)
+void Form::beSigned(const Bureaucrat &buero)
 {
 	// if (buero.getGrade() <= this->getSignGrade())
 	if (this->getSignGrade() <= buero.getGrade())

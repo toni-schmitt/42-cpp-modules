@@ -39,7 +39,7 @@ public:
 	Form &operator=(const Form &sec);
 
 	/* Public Methods */
-	void beSigned(Bureaucrat buero);
+	void beSigned(const Bureaucrat &buero);
 
 	/* Getter */
 	std::string getName() const;
@@ -67,6 +67,6 @@ public:
 	};
 };
 
-std::ostream &operator<<(std::ostream &os, Form form);
+std::ostream &operator<<(std::ostream &os, const Form &form);
 
 #endif

@@ -20,127 +20,272 @@
 
 #include <iostream>
 
-void test_presidentail_pardon(AForm &valid_form, AForm &invalid_form)
+#define HEADER_START "\n\n-- "
+#define HEADER_END " --\n\n"
+
+const unsigned int highes_grade = 1, lowest_grade = 150;
+
+void valid_buero()
 {
+	std::cout << HEADER_START << "Testing a valid Bureaucrat" << HEADER_END;
+	{
+		std::cout << "Creating John with the default grade (150)" << std::endl;
 
+		Bureaucrat john = Bureaucrat("john");
+		std::cout << john << std::endl;
 
-	std::cout << "Create valid Signer and Executor for Presidential Pardon Form" << std::endl;
-	Bureaucrat valid_singer("Valid Signer", 25);
-	Bureaucrat valid_executor("Valid Executor", 5);
-	std::cout << valid_singer << std::endl << valid_executor << std::endl;
+		std::cout << "Setting Grade of john to highest Grade (" << highes_grade << ")" << std::endl;
+		try
+		{
+			john.setGrade(highes_grade);
+		}
+		catch (const std::exception &e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 
-	std::cout << "\nAttempt to sign and execute form with valid Bureaucrat\n" << std::endl;
-	valid_singer.signForm(valid_form);
-	valid_executor.executeForm(valid_form);
-
-
-	std::cout << "Create invalid Signer and Executor for Presidential Pardon From" << std::endl;
-	Bureaucrat invlaid_signer("Invalid Signer", 26);
-	Bureaucrat invalid_executor("Invalid Executor", 6);
-	std::cout << invlaid_signer << std::endl << invalid_executor << std::endl;
-
-	std::cout << "\nAttempt to sign and execute form with invalid Buerocrats\n" << std::endl;
-	invlaid_signer.signForm(invalid_form);
-	invalid_executor.executeForm(invalid_form);
-
-	std::cout << "\nAttempt to execute unsigned Form with valid Buerocrat\n" << std::endl;
-	valid_executor.executeForm(invalid_form);
-	
+		std::cout << "Setting Grade of john to lowest Grade (" << lowest_grade << ")" << std::endl;
+		try
+		{
+			john.setGrade(lowest_grade);
+		}
+		catch (const std::exception &e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+	}
 }
 
-void test_robotomy(AForm &valid_form, AForm &invalid_form)
+void invalid_buero()
 {
 
+	std::cout << HEADER_START << "Testing Exceptions (invalid Grades / Bueraucrat)" << HEADER_END;
+	{
+		std::cout << HEADER_START << "Testing Exception in Constructor" << std::endl;
+		{
+			const unsigned int invalid_grade = 3000;
+			std::cout << "Creating John with an invalid Grade (" << invalid_grade << ")" << std::endl;
+			try
+			{
+				Bureaucrat john = Bureaucrat("john", invalid_grade);
+			}
+			catch (const std::exception &e)
+			{
+				std::cerr << e.what() << '\n';
+			}
+		}
+		std::cout << HEADER_START << "Testing Exception in setGrade" << std::endl;
+		{
+			const unsigned int valid_grade = 30;
+			std::cout << "Creating John with a valid Grade (" << valid_grade << ")" << std::endl;
 
-	std::cout << "Create valid Signer and Executor for Presidential Pardon Form" << std::endl;
-	Bureaucrat valid_singer("Valid Signer", 72);
-	Bureaucrat valid_executor("Valid Executor", 45);
-	std::cout << valid_singer << std::endl << valid_executor << std::endl;
+			Bureaucrat john = Bureaucrat("john", valid_grade);
+			std::cout << john << std::endl;
 
-	std::cout << "\nAttempt to sign and execute form with valid Bureaucrat\n" << std::endl;
-	valid_singer.signForm(valid_form);
-	valid_executor.executeForm(valid_form);
+			const unsigned int invalid_grade = 500;
+			std::cout << "Setting Grade of John to an invalid Grade (" << invalid_grade << ")" << std::endl;
+			try
+			{
+				john.setGrade(invalid_grade);
+			}
+			catch (const std::exception &e)
+			{
+				std::cerr << e.what() << '\n';
+			}
+		}
+		std::cout << HEADER_START << "Testing Exception in incrementGrade" << std::endl;
+		{
+			std::cout << "Creating john with the highest possibel Grade (" << highes_grade << ")" << std::endl;
+			Bureaucrat john = Bureaucrat("john", highes_grade);
 
+			std::cout << "Incrementing Grade to " << highes_grade - 1 << " should thwor exception" << std::endl;
+			try
+			{
+				john.incrementGrade();
+			}
+			catch (const std::exception &e)
+			{
+				std::cerr << e.what() << '\n';
+			}
+		}
+		std::cout << HEADER_START << "Testing Exception in decrementGrade" << std::endl;
+		{
+			std::cout << "Creating John with the lowest possible Grade (" << lowest_grade << ")" << std::endl;
+			Bureaucrat john = Bureaucrat("john", lowest_grade);
 
-	std::cout << "Create invalid Signer and Executor for Presidential Pardon From" << std::endl;
-	Bureaucrat invlaid_signer("Invalid Signer", 73);
-	Bureaucrat invalid_executor("Invalid Executor", 46);
-	std::cout << invlaid_signer << std::endl << invalid_executor << std::endl;
-
-	std::cout << "\nAttempt to sign and execute form with invalid Buerocrats\n" << std::endl;
-	invlaid_signer.signForm(invalid_form);
-	invalid_executor.executeForm(invalid_form);
-
-	std::cout << "\nAttempt to execute unsigned Form with valid Buerocrat\n" << std::endl;
-	valid_executor.executeForm(invalid_form);
-	
+			std::cout << "Decrementing Grade to " << lowest_grade + 1 << " should throw exception" << std::endl;
+			try
+			{
+				john.decrementGrade();
+			}
+			catch (const std::exception &e)
+			{
+				std::cerr << e.what() << '\n';
+			}
+		}
+	}
 }
 
-void test_shrubbery(AForm &valid_form, AForm &invalid_form)
+void test_shruberry()
 {
+	const unsigned int sign_grade = 145, exec_grade = 137;
+	std::cout << HEADER_START << "Test Shrubbery Creation Form" << HEADER_END;
 
-	std::cout << "Create valid Signer and Executor for Presidential Pardon Form" << std::endl;
-	Bureaucrat valid_singer("Valid Signer", 145);
-	Bureaucrat valid_executor("Valid Executor", 137);
-	std::cout << valid_singer << std::endl << valid_executor << std::endl;
+	std::cout << "Creating ShrubberyCreationForm" << std::endl;
 
-	std::cout << "\nAttempt to sign and execute form with valid Bureaucrat\n" << std::endl;
-	valid_singer.signForm(valid_form);
-	valid_executor.executeForm(valid_form);
+	ShrubberyCreationForm form = ShrubberyCreationForm("home");
+	std::cout << form << std::endl;
 
-	std::cout << "Create invalid Signer and Executor for Presidential Pardon From" << std::endl;
-	Bureaucrat invlaid_signer("Invalid Signer", 146);
-	Bureaucrat invalid_executor("Invalid Executor", 138);
-	std::cout << invlaid_signer << std::endl << invalid_executor << std::endl;
+	std::cout << "Creating two Bueros (one for signing and one for executing)" << std::endl;
+	Bureaucrat signer = Bureaucrat("john", sign_grade - 1);
+	Bureaucrat executor = Bureaucrat("joe", exec_grade - 1);
 
-	std::cout << "\nAttempt to sign and execute form with invalid Buerocrats\n" << std::endl;
-	invlaid_signer.signForm(invalid_form);
-	invalid_executor.executeForm(invalid_form);
+	std::cout << "Trying to sign " << form << " with " << signer << std::endl;
+	try
+	{
+		signer.signForm(form);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 
-	std::cout << "\nAttempt to execute unsigned Form with valid Buerocrat\n" << std::endl;
-	valid_executor.executeForm(invalid_form);
-	
+	std::cout << "Trying to execute " << form << " with " << executor << std::endl;
+	try
+	{
+		executor.executeForm(form);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
+
+void test_robot()
+{
+	const unsigned int sign_grade = 72, exec_grade = 45;
+	std::cout << HEADER_START << "Test Shrubbery Creation Form" << HEADER_END;
+
+	std::cout << "Creating RobotomyRequestForm" << std::endl;
+
+	RobotomyRequestForm form = RobotomyRequestForm("blue");
+	std::cout << form << std::endl;
+
+	std::cout << "Creating two Bueros (one for signing and one for executing)" << std::endl;
+	Bureaucrat signer = Bureaucrat("john", sign_grade - 1);
+	Bureaucrat executor = Bureaucrat("joe", exec_grade - 1);
+
+	std::cout << "Trying to sign " << form << " with " << signer << std::endl;
+	try
+	{
+		signer.signForm(form);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	std::cout << "Trying to execute " << form << " with " << executor << std::endl;
+	try
+	{
+		executor.executeForm(form);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+}
+
+void test_presi()
+{
+	const unsigned int sign_grade = 25, exec_grade = 5;
+	std::cout << HEADER_START << "Test Shrubbery Creation Form" << HEADER_END;
+
+	std::cout << "Creating PresidentialPardonForm" << std::endl;
+
+	PresidentialPardonForm form = PresidentialPardonForm("turk");
+	std::cout << form << std::endl;
+
+	std::cout << "Creating two Bueros (one for signing and one for executing)" << std::endl;
+	Bureaucrat signer = Bureaucrat("john", sign_grade - 1);
+	Bureaucrat executor = Bureaucrat("joe", exec_grade - 1);
+
+	std::cout << "Trying to sign " << form << " with " << signer << std::endl;
+	try
+	{
+		signer.signForm(form);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	std::cout << "Trying to execute " << form << " with " << executor << std::endl;
+	try
+	{
+		executor.executeForm(form);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+}
+
+void buero_form()
+{
+	std::cout << HEADER_START << "Testing Buerocrats with Froms" << HEADER_END;
+
+	test_shruberry();
+
+	test_robot();
+
+	test_presi();
+}
+
+void test_intern()
+{
+	std::cout << HEADER_START << "Testing Internts " << HEADER_END;
+
+	Intern bob = Intern();
+
+	AForm *tmp;
+
+	std::cout << "Letting Internt create every Form" << std::endl;
+
+	tmp = bob.makeForm("ShrubberyCreation", "bender");
+
+	std::cout << "Form: " << (*tmp).getName() << " is";
+	(*tmp).getStatus() ? std::cout << " " : std::cout << " not ";
+	std::cout << "signed. (Sign Grade: " << (*tmp).getSignGrade() << ", Execute Grade: " << (*tmp).getExecuteGrade() << ")" << std::endl;
+
+	delete tmp;
+
+	tmp = bob.makeForm("RobotomyRequest", "bender");
+
+	std::cout << "Form: " << (*tmp).getName() << " is";
+	(*tmp).getStatus() ? std::cout << " " : std::cout << " not ";
+	std::cout << "signed. (Sign Grade: " << (*tmp).getSignGrade() << ", Execute Grade: " << (*tmp).getExecuteGrade() << ")" << std::endl;
+
+	delete tmp;
+
+	tmp = bob.makeForm("PresidentialPardon", "bender");
+
+	std::cout << "Form: " << (*tmp).getName() << " is";
+	(*tmp).getStatus() ? std::cout << " " : std::cout << " not ";
+	std::cout << "signed. (Sign Grade: " << (*tmp).getSignGrade() << ", Execute Grade: " << (*tmp).getExecuteGrade() << ")" << std::endl;
+
+	delete tmp;
+}
+
 int main()
 {
-	Intern intern;
-	AForm *valid_tmp;
-	AForm *invalid_tmp;
+	valid_buero();
 
-	std::cout << "\n\nTest Intern and Shrubbery Creation Form\n\n" << std::endl;
-	std::cout << "Let Intern create Valid ShrubberyCreationForm" << std::endl;
-	valid_tmp = intern.makeForm("ShrubberyCreation", "home");
-	std::cout << "Let Intern create Invalid ShrubberyCreationForm" << std::endl;
-	invalid_tmp = intern.makeForm("ShrubberyCreation", "invalid_home");
-	std::cout << "Test ShrubberyCreationForm with Froms created by Intern" << std::endl;
-	test_shrubbery(*valid_tmp, *invalid_tmp);
-	delete valid_tmp;
-	delete invalid_tmp;
+	invalid_buero();
 
-	std::cout << "\n\nTest Intern and RobotomyRequestForm\n\n" << std::endl;
-	std::cout << "Let Intern create Valid RobotomyRequestForm" << std::endl;
-	valid_tmp = intern.makeForm("RobotomyRequest", "home");
-	std::cout << "Let Intern create Invalid RobotomyRequestForm" << std::endl;
-	invalid_tmp = intern.makeForm("RobotomyRequest", "invalid_home");
-	std::cout << "Test RobotomyRequestForm with Froms created by Intern" << std::endl;
-	test_robotomy(*valid_tmp, *invalid_tmp);
-	delete valid_tmp;
-	delete invalid_tmp;
+	buero_form();
 
-	std::cout << "\n\nTest Intern and PresidentialPardonForm\n\n" << std::endl;
-	std::cout << "Let Intern create Valid PresidentialPardonForm" << std::endl;
-	valid_tmp = intern.makeForm("PresidentialPardon", "home");
-	std::cout << "Let Intern create Invalid PresidentialPardonForm" << std::endl;
-	invalid_tmp = intern.makeForm("PresidentialPardon", "invalid_home");
-	std::cout << "Test PresidentialPardonForm with Froms created by Intern" << std::endl;
-	test_presidentail_pardon(*valid_tmp, *invalid_tmp);
-	delete valid_tmp;
-	delete invalid_tmp;
+	test_intern();
 
-
-	std::cout << "\n\nTest Intern and an Invalid Form\n\n" << std::endl;
-	std::cout << "Let Intern create Valid non existent Form" << std::endl;
-	valid_tmp = intern.makeForm("non-existens", "home");
-	if (valid_tmp == NULL)
-		std::cout << "Intern created an non existent Form" << std::endl;
+	return 0;
 }

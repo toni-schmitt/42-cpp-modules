@@ -30,6 +30,14 @@ RobotomyRequestForm::~RobotomyRequestForm()
 }
 
 /* Overloaded Operators */
+std::ostream &operator<<(std::ostream &os, const RobotomyRequestForm &form)
+{
+	os << "Form " << form.getName() << " is";
+	form.getStatus() ? os << " " : os << " not ";
+	os << "signed (Sign Grade: " << form.getSignGrade() << ", Execution Grade: " << form.getExecuteGrade() << ", Target: " << form.getTarget() << ")";
+	return os;
+}
+
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &sec)
 {
 	std::cout << "RobotomyRequestForm Assignation operator called" << std::endl;
@@ -46,7 +54,7 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 	AForm::execute(executor);
 
 	std::cout << "brrrrr" << std::endl;
-	
+
 	std::srand(time(NULL));
 	int rnd = std::rand() % 100;
 	std::string result = "";
@@ -56,7 +64,6 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 		result = "failed";
 
 	std::cout << "Robotomy of " << this->getTarget() << " " << result << std::endl;
-
 }
 
 /* Getter */

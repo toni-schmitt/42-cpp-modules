@@ -30,5 +30,6 @@ public:
 
 };
 
+std::ostream &operator<<(std::ostream &os, const PresidentialPardonForm &form);
 
 #endif

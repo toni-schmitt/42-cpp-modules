@@ -27,36 +27,23 @@ Bureaucrat::Bureaucrat() : _name("john")
 	}
 }
 
+Bureaucrat::Bureaucrat(const std::string &name, unsigned int grade) : _name(name)
+{
+	try
+	{
+		this->setGrade(grade);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+}
+
 Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy.getName())
 {
 	try
 	{
 		this->setGrade(copy.getGrade());
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-}
-
-Bureaucrat::Bureaucrat(const std::string name) : _name(name)
-{
-	try
-	{
-		this->setGrade(150);
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-}
-
-
-Bureaucrat::Bureaucrat(const std::string name, unsigned int grade) : _name(name)
-{
-	try
-	{
-		this->setGrade(grade);
 	}
 	catch (const std::exception &e)
 	{

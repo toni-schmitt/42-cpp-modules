@@ -29,8 +29,8 @@ private:
 public:
 	/* Constructors */
 	Bureaucrat();
+	Bureaucrat(const std::string &name, unsigned int grade = 150);
 	Bureaucrat(const Bureaucrat &copy);
-	Bureaucrat(const std::string name);
 	/* Deconstructors */
 	~Bureaucrat();
 
@@ -40,7 +40,7 @@ public:
 	/* Public Methods */
 	void incrementGrade();
 	void decrementGrade();
-	void signForm(Form form);
+	void signForm(Form &form) const;
 
 	/* Getter */
 	std::string getName() const;
@@ -68,6 +68,6 @@ public:
 	
 };
 
-std::ostream &operator<<(std::ostream &os, Bureaucrat buer);
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &buer);
 
 #endif

@@ -27,6 +27,15 @@ PresidentialPardonForm::~PresidentialPardonForm()
 }
 
 /* Overloaded Operators */
+
+std::ostream &operator<<(std::ostream &os, const PresidentialPardonForm &form)
+{
+	os << "Form " << form.getName() << " is";
+	form.getStatus() ? os << " " : os << " not ";
+	os << "signed (Sign Grade: " << form.getSignGrade() << ", Execution Grade: " << form.getExecuteGrade() << ", Target: " << form.getTarget() << ")";
+	return os;
+}
+
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &sec)
 {
 	std::cout << "PresidentialPardonForm Assignation operator called" << std::endl;

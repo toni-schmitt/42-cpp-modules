@@ -28,6 +28,15 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 }
 
 /* Overloaded Operators */
+
+std::ostream &operator<<(std::ostream &os, const ShrubberyCreationForm &form)
+{
+	os << "Form " << form.getName() << " is";
+	form.getStatus() ? os << " " : os << " not ";
+	os << "signed (Sign Grade: " << form.getSignGrade() << ", Execution Grade: " << form.getExecuteGrade() << ", Target: " << form.getTarget() << ")";
+	return os;
+}
+
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &sec)
 {
 	std::cout << "ShrubberyCreationForm Assignation operator called" << std::endl;
@@ -49,7 +58,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	shrubbery << "     /~~   ~~\\" << std::endl;
 	shrubbery << "  /~~         ~~\\" << std::endl;
 	shrubbery << " {               }" << std::endl;
-	shrubbery <<  "  \\  _-     -_  /" << std::endl;
+	shrubbery << "  \\  _-     -_  /" << std::endl;
 	shrubbery << "    ~  \\\\ //  ~" << std::endl;
 	shrubbery << " _- -   | | _- _" << std::endl;
 	shrubbery << "   _ -  | |   -_" << std::endl;

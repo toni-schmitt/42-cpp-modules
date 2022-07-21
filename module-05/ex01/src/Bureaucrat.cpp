@@ -27,11 +27,11 @@ Bureaucrat::Bureaucrat() : _name("john")
 	}
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy.getName())
+Bureaucrat::Bureaucrat(const std::string &name, unsigned int grade) : _name(name)
 {
 	try
 	{
-		this->setGrade(copy.getGrade());
+		this->setGrade(grade);
 	}
 	catch (const std::exception &e)
 	{
@@ -39,11 +39,11 @@ Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy.getName())
 	}
 }
 
-Bureaucrat::Bureaucrat(const std::string name) : _name(name)
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy.getName())
 {
 	try
 	{
-		this->setGrade(150);
+		this->setGrade(copy.getGrade());
 	}
 	catch (const std::exception &e)
 	{
@@ -75,7 +75,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &sec)
 	return *this;
 }
 
-std::ostream &operator<<(std::ostream &os, Bureaucrat buer)
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &buer)
 {
 	os << buer.getName() << ", bureaucrat grade " << buer.getGrade();
 	return os;
@@ -106,7 +106,7 @@ void Bureaucrat::decrementGrade()
 	}
 }
 
-void Bureaucrat::signForm(Form form)
+void Bureaucrat::signForm(Form &form) const
 {
 	try
 	{
@@ -118,7 +118,7 @@ void Bureaucrat::signForm(Form form)
 				  << " couldn't sign " << form.getName() << " because " << e.what() << "." << std::endl;
 		return;
 	}
-	std::cout << this->_name << " signed" << form.getName() << std::endl;
+	std::cout << this->_name << " signed " << form.getName() << std::endl;
 }
 
 /* Getter */

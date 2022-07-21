@@ -29,5 +29,6 @@ public:
 	void setTarget(std::string target);
 };
 
+std::ostream &operator<<(std::ostream &os, const RobotomyRequestForm &form);
 
 #endif

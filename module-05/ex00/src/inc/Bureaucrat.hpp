@@ -65,6 +65,6 @@ public:
 	
 };
 
-std::ostream &operator<<(std::ostream &os, Bureaucrat buer);
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &buer);
 
 #endif
