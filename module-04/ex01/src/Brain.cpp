@@ -23,7 +23,7 @@ Brain::Brain()
 Brain::Brain(const Brain &copy)
 {
 	std::cout << "Brain Copy Constructor called" << std::endl;
-	for (size_t i = 0; i < sizeof(this->_ideas) / sizeof(this->_ideas[0]) && i < sizeof(copy._ideas) / sizeof(copy._ideas[0]); i++)
+	for (size_t i = 0; i < this->MaxIdeas; i++)
 	{
 		this->_ideas[i] = copy._ideas[i];
 	}
@@ -41,7 +41,7 @@ Brain &Brain::operator=(const Brain &sec)
 	std::cout << "Brain Assignation operator called" << std::endl;
 	if (this == &sec)
 		return *this;
-	for (size_t i = 0; i < sizeof(this->_ideas) / sizeof(this->_ideas[0]) && i < sizeof(sec._ideas) / sizeof(sec._ideas[0]); i++)
+	for (size_t i = 0; i < this->MaxIdeas; i++)
 	{
 		this->_ideas[i] = sec._ideas[i];
 	}
