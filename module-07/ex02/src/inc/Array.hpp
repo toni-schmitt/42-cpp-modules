@@ -53,6 +53,8 @@ public:
 		if (*this == sec)
 			return;
 		
+		delete[] this->_content;
+
 		int sec_size = sec.size();
 		this->_content = new T[sec_size];
 
