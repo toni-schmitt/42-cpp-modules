@@ -15,7 +15,7 @@
 #include <iostream>
 
 /* Constructors */
-Bureaucrat::Bureaucrat() : _name("john")
+Bureaucrat::Bureaucrat() : _name("undefined")
 {
 	try
 	{
@@ -27,7 +27,19 @@ Bureaucrat::Bureaucrat() : _name("john")
 	}
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name("john")
+Bureaucrat::Bureaucrat(const std::string &name, unsigned int grade) : _name(name)
+{
+	try
+	{
+		this->setGrade(grade);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy.getName())
 {
 	try
 	{

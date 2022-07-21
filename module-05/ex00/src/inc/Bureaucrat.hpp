@@ -27,6 +27,7 @@ private:
 public:
 	/* Constructors */
 	Bureaucrat();
+	Bureaucrat(const std::string &name, unsigned int grade = 150);
 	Bureaucrat(const Bureaucrat &copy);
 	/* Deconstructors */
 	~Bureaucrat();
