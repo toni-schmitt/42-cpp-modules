@@ -55,11 +55,9 @@ void identify(Base &ref)
 int main()
 {
 	Base *ptr = generate();
-	Base *ref = generate();
 
 	identify(ptr);
-	identify(*ref);
+
 	delete ptr;
-	delete ref;
 	return (0);
 }
