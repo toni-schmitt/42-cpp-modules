@@ -135,6 +135,8 @@ void testBrains()
 
 	smart_boi_copy->looseIdea("eat more");
 	smart_boi_copy->haveIdea("eat less");
+
+	delete smart_boi_copy;
 }
 
 int main()
@@ -142,4 +144,6 @@ int main()
 	testAnimals();
 
 	testBrains();
+
+	system("leaks zoo");
 }
