@@ -26,7 +26,7 @@ Dog::Dog(const Dog &copy) : Animal(copy)
 {
 	std::cout << "Dog Copy Constructor called" << std::endl;
 	this->_type = copy._type;
-	this->_pBrain = copy._pBrain;
+	this->_pBrain = new Brain(*copy._pBrain);
 }
 
 /* Deconstructors */
@@ -44,6 +44,7 @@ Dog &Dog::operator=(const Dog &sec)
 		return *this;
 
 	this->_type = sec._type;
+	this->_pBrain = new Brain(*sec._pBrain);
 	return *this;
 }
 
